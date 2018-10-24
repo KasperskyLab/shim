@@ -1,8 +1,20 @@
 
 #include "version.h"
 
+typedef struct {
+	EFI_GUID marker_guid;
+	CHAR8 module_name[8];
+	UINT16 version[4];
+} KL_MODULE_VERSION;
+
+KL_MODULE_VERSION kl_module_version __attribute__((section (".data.ident"))) = {
+	{0x23fae013, 0x8464, 0x497a, {0xa1, 0x8f, 0x72, 0xd5, 0x6, 0xa6, 0xdb, 0xbb}},
+	"kl_shim",
+	{15, 0, 0, 0}
+};
+
 CHAR8 shim_version[] __attribute__((section (".data.ident"))) =
-	"UEFI SHIM\n"
+	"UEFI SHIM (KL PATCH)\n"
 	"$Version: @@VERSION@@ $\n"
 	"$BuildMachine: @@UNAME@@ $\n"
 	"$Commit: @@COMMIT@@ $\n";
