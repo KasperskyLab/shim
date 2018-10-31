@@ -9,7 +9,7 @@ RUN apt-get update && \
 COPY . /build
 WORKDIR /build
 
-CMD make EFI_PATH=/usr/lib VENDOR_CERT_FILE=KLFDEEV_2017.cer DEFAULT_LOADER=\\\\\\\\kl_main.efi && \
+CMD make EFI_PATH=/usr/lib VENDOR_CERT_FILE=KLBOOTEV_2018.cer DEFAULT_LOADER=\\\\\\\\kl_main.efi && \
     chmod -x /build/shimx64.efi && \
     sha256sum /build/shimx64.efi && \
     cp /build/shimx64.efi /out
